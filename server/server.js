@@ -1,28 +1,32 @@
-// server/server.js
 import express from "express";
 import bodyParser from "body-parser";
-import indexRouter from "./src/routes/index.js";
 import path from "path";
 import { fileURLToPath } from "url";
+import cors from "cors";
 
-// Create a variable for the current file's directory
+import indexRouter from "./src/routes/index.js";
+import userRouter from "./src/routes/users.js"; 
+import productRouter from "./src/routes/products.js";
+
+
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
-// Middleware to parse JSON and URL-encoded data
+app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
 
-// Serve static files from the client/dist folder
 app.use(express.static(path.resolve(__dirname, '../client/dist')));
 
-// Use all routers for handling routes
-app.use('/', indexRouter); 
+// Use routers
+app.use('/', indexRouter);
+app.use('/users', userRouter); 
+app.use('/products', productRouter);
 
-// Start the server
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });

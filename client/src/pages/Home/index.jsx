@@ -4,10 +4,8 @@ import StackingCards from "./StackingCards"
 export default function Home() {
     return (
         <>
-            {/* <HeroImage/>
-            <StackingCards/> */}
-            
-            
+            <HeroImage/>
+            <StackingCards/>            
         </>
     )
 }

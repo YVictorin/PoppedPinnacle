@@ -1,7 +1,8 @@
+
 const Footer = () => {
     return (
       <>
-        <footer className="absolute top-[329vh]">
+        <footer>
           <div className="footer-info mobile">
             <div className="footer-shop mobile">SHOP <span>&#43;</span></div>
             <div className="footer-about mobile">CUSTOMER ASSISTANCE <span>&#43;</span></div>

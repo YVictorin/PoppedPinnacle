@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import Slider from '../pages/Home/Slider';
 
 export default function Navbar() {
     return (
@@ -21,13 +20,12 @@ export default function Navbar() {
                 <li><Link to="/">HOME</Link></li>
                     <li><Link id="products-page-link" to="/products">POPCORN FLAVORS</Link></li>
                     <li><Link to="/contact">CONTACT US</Link></li>
-                    <li className='bg-red-500'>SLIDER</li>
+                    <li>CREATE</li>
                    
                     <li><span id="search-icon" className="material-symbols-outlined">search</span></li>
                     <li><span id="cart-icon" className="material-symbols-outlined">shopping_cart</span></li>
                     <li><span id="menu-icon" className="material-symbols-outlined">menu</span></li>
             </ul>
-            <Slider/>
         </nav>
     </header>
         </>

@@ -41,3 +41,5 @@ Desktop.ini
 *.bak
 *.tmp
 *.old
+test.js
+*.rest

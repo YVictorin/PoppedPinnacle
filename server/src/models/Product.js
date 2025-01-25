@@ -1,10 +1,10 @@
-import db from '../config/db';
+import db from '../config/db.js';
 
 class Product {
     static async getAll() {
-        const connection = db.getConnection();
+        const connection = await db.getConnection();
         try {
-            const [rows] = await connection.query(`SELECT * FROM product`)
+            const [rows] = await connection.query(`SELECT * FROM products`)
             return rows;
         } catch(e) {
             console.error(e)
@@ -16,15 +16,33 @@ class Product {
          }
     }
 
+    static async addProduct(productName, price, productDesc, imgSrc){
+        const connection = await db.getConnection();
+        try {
+            const [rows] = await connection.query(
+                `INSERT INTO products(name, price, descr, imgUrl1, imgUrl2)
+                  VALUES (?, ?, ?, ?, ?)
+            `, [productName, price, productDesc, imgSrc[0], imgSrc[1]])
+            return rows;
+        } catch(e) {
+            console.error(e)
+            return {
+                error: 'There was an error adding a product.'
+            }
+         } finally {
+            connection.release();
+         }
+    }
+
     static async getAllStockStatus() {
-        const connection = db.getConnection();
+        const connection = await db.getConnection();
         try {
             const [rows] = await connection.query(`
                 SELECT
                     name,
-                    img,
+                    img_url,
                     price,
-                    desc,
+                    dsc,
                     CASE WHEN stock = 0 THEN 'Out of Stock'
                     WHEN stock < 10 THEN 'Low Stock'
                     ELSE 'In Stock'
@@ -42,11 +60,11 @@ class Product {
     }
 
     static async recommendProductsAbovePrice(price) {
-        const connection = db.getConnection();
+        const connection = await db.getConnection();
         try {
             const [rows] = await connection.query(`
                 WITH rec AS (
-                    SELECT name, img, price, desc
+                    SELECT name, img, price, descr
                     FROM product
                     WHERE price >= ?
                 )
@@ -70,6 +88,8 @@ class Product {
             connection.release();
         }
     }
+
+   
 }
 
 export default Product

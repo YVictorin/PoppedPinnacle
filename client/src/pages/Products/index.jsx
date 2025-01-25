@@ -1,10 +1,13 @@
-import React from 'react';
+import ProductGrid from "./ProductGrid/ProductGrid";
+import HeroSection from "./Hero/HeroSection";
 
-const Products = () => {
+const Products = () => {      
     return (
-        <div>
-            Products
-        </div>
+        <>
+         <HeroSection/>
+
+          <ProductGrid/>
+        </>
     );
 }
 

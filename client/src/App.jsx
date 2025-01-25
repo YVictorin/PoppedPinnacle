@@ -7,8 +7,7 @@ import Modal from './components/ui/Modal'
 import Home from './pages/Home/index'
 import Products from './pages/Products/index'
 import Contact from './pages/Contact/index'
-
-
+import ErrorBoundary from './components/boundaries/ErrorBoundary'
 
 
 function App() {
@@ -19,7 +18,14 @@ function App() {
           <Route index element={<Home/>}/>
         </Route>
         <Route path="/products" element={<Layout/>}>
-          <Route index element={<Products/>}/>
+          <Route 
+            index 
+            element={
+              <ErrorBoundary fallback="There was an issue loading the Products page. Please try again later.">
+                <Products/>
+                </ErrorBoundary>
+                }
+            />
         </Route>
         <Route path="/contact" element={<Layout/>}>
           <Route index element={<Contact/>}/>
