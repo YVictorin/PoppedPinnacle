@@ -1,0 +1,330 @@
+@font-face {
+    font-family: "TIMMONSNY-Regular";
+    src: url("https://db.onlinewebfonts.com/t/26b4978e67a51484ed7bccea1ffb38b8.eot");
+    src: url("https://db.onlinewebfonts.com/t/26b4978e67a51484ed7bccea1ffb38b8.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/26b4978e67a51484ed7bccea1ffb38b8.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/26b4978e67a51484ed7bccea1ffb38b8.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/26b4978e67a51484ed7bccea1ffb38b8.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/26b4978e67a51484ed7bccea1ffb38b8.svg#TIMMONSNY-Regular")format("svg");
+ }
+
+:root {
+    --white-200: #eae9e4;
+    --black-200: #262625;
+    --secondary-color: rgb(176, 144, 110);
+    --primary-color: rgb(7, 66, 113);
+    --light-gray: rgb(232, 233, 235);
+    --deep-olive: rgb(85, 82, 61);
+    --timmons-font: 'TIMMONSNY-Regular', 'sans-serif';
+
+}
+
+/* contact related styling */
+  ::placeholder {
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+  
+  .contact-nav, .tagline {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 1.5em 0;
+    text-align: center;
+  }
+  
+  .tagline {
+    bottom: -20%;
+  }
+  
+  .links {
+    position: absolute;
+    bottom: -19%;
+    left: 1.5rem;
+  }
+  
+  .contact-header {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .contact-header .contact-header-text h1 {
+    font-family: var(--timmons-font);
+    font-size: 20vw;
+    font-weight: lighter;
+  }
+  
+  .contact-header .cta {
+    margin: 1rem 0;
+  }
+  
+  .contact-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--black-200);
+    display: flex;
+    padding: 1rem;
+    pointer-events: none;
+    opacity: 0;
+  }
+  
+  .col:nth-child(1) {
+    flex: 1;
+    height: 100%;
+    border-right: 1.5px solid var(--white-200);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 3rem;
+  }
+  
+  .col:nth-child(2) {
+    flex: 2;
+    padding: 0 1rem;
+  }
+  
+  .col:nth-child(2) .about {
+    width: 40%;
+    color: var(--white-200);
+    margin: 1rem 0;
+  }
+  
+  .col:nth-child(2) .copy {
+    display: flex;
+    justify-content: space-between;
+    color: var(--white-200);
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+  
+  .col:nth-child(2) .send {
+    position: absolute;
+    bottom: 0;
+  }
+  
+  .col:nth-child(2) .send h1 {
+    color: var(--white-200);
+    font-family: var(--timmons-font);
+    text-transform: uppercase;
+    font-weight: lighter;
+    font-size: 25rem;
+  }
+  
+  .contact-overlay-logo {
+    width: max-content;
+    border: 1px solid var(--white-200);
+  }
+  
+  .contact-overlay-logo a {
+    padding: 0 0.25rem;
+    text-decoration: none;
+    color: var(--white-200);
+    text-transform: uppercase;
+  }
+  
+  .form-container label {
+    color: var(--white-200);
+    font-size: 20px;
+    display: block;
+  }
+  
+  .form-container .jobs {
+    margin: 1rem 0 3rem 0;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .form-container .item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .form-container .item label {
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+  
+  .form-container button {
+    color: #000;
+    background-color: var(--white-200);
+    border: 1px solid var(--white-200);
+  }
+  
+  input[type="text"], input[type="email"], input[type="tel"] {
+    width: 50%;
+    outline: none;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--white-200);
+    padding: 0.5rem 0;
+    margin: 1rem 0;
+    color: var(--white-200);
+  }
+  
+  .send, .contact-header {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  
+  .send h1 span, .contact-header-text h1 span {
+    position: relative;
+    top: 31rem;
+  }
+  
+  #back {
+    cursor: pointer;
+  }
+  
+  .contact-header-text {
+    font-family: var(--timmons-font);
+    font-size: 20vw;
+  }
+  
+  
+  footer {
+    background-color: var(--black-200);
+  }
+
+
+  /* main contact form styling */
+  .form-default-container {
+    width: 100%;
+    height: 50vh;
+    text-align: center;
+    transform: translateY(25%);
+    color: white;
+}
+
+.form-default-container h1 {
+    font-size: 3em;
+    margin-bottom: 2rem;
+}
+
+.form-default-container i {
+   margin-right: 1rem;
+}
+
+.form-default-container h2:nth-child(3) i{
+    margin-right: 1rem;
+
+}
+
+.form-default-container h2:nth-child(3) {
+    margin-bottom: 2rem;
+}
+
+#form-number {
+    transform: translateX(-3rem);
+}
+
+
+
+.form-overlay {
+   width: 2000px;
+   height: 2000px;
+   padding: 40rem;
+   display: grid;
+   place-content: center;
+   gap: 2rem;
+   padding: 2rem;
+   background-color: #292928;
+   position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    border-radius: 50%;
+    display: none;
+
+}
+
+.form-overlay * {
+    transform: scale(0.8);
+}
+
+.form-close-btn {
+    transform: scale(4);
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    color: white;
+    z-index: 1000;
+    display: none;
+}
+
+.form-overlay h2 {
+    text-align: left;
+}
+
+.form-overlay input {
+    height: 4rem;
+    padding: 1rem;
+    background-color: #292929;
+    color: white;
+    border: 3px solid white;
+    border-radius: 3px;
+}
+
+.form-overlay button {
+    width: 10rem;
+    position: absolute;
+    bottom: 38%;
+    right: 42%;
+    background-color: #292928;
+    border: 2px solid var(--color-2);
+}
+
+textarea:focus, input:focus{
+    outline: none;
+    border: 3px solid var(--color-2);
+    transition: all 0.1s ease-in;
+}
+
+
+@media (max-width: 900px) {
+    .contact-overlay-logo {
+      margin-bottom: 2rem;
+    }
+    .links {
+      display: none;
+    }
+  
+    .contact-overlay {
+      flex-direction: column-reverse;
+    }
+  
+    .col:nth-child(1) {
+      border: none;
+    }
+  
+    .send {
+      right: 1rem;
+    }
+  
+    .send h1 {
+      font-size: 9.5rem;
+    }
+  }
+
+  /* responsiveness for mobile devices */
+  @media (max-width: 500px) {
+    .kernel {
+      display: none;
+      font-size: 1px;
+    }
+
+    .kernel span {
+      display: none;
+      font-size: 1px;
+
+    }
+  
+  }

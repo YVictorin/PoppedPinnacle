@@ -2,10 +2,12 @@ import Container from 'react-bootstrap/Container';
 import ImageSlider from './ImageSlider';
 
 import img1 from "/images/home-hero.png";
-import img2 from "/images/footer-img.png"
+import img2 from "/images/CinnamonApple-product-2.png"
+import img3 from "/images/Garlic-product-2.png"
+import img4 from "/images/PeanutButter-product-2.png"
 
 const InfoSection = () => {
-    const IMAGES = [img1, img2, img1, img2]
+    const IMAGES = [img1, img2, img3, img4]
     return (
         <>
         <div className=" w-full h-3/6 grid place-content-center">

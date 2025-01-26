@@ -12,3 +12,41 @@
     filter: brightness(50%)
   }
 
+
+  .heroSectionText {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    color: white;
+    text-align: center;
+  }
+
+  .heroSectionText p:first-child {
+        font-style: italic;
+    }
+
+  .heroSectionText h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+
+  @media (max-width: 769px) {
+    .heroSectionText {
+      white-space: nowrap;
+    }
+
+    .heroSectionText h2 {
+      font-size: 2rem;
+    }
+
+    .heroSectionText p:last-child {
+      white-space: wrap;
+      font-size: 0.8rem;
+    }
+  }

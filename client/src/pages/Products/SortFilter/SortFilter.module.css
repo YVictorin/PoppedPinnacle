@@ -1,0 +1,28 @@
+
+
+select,
+::picker(select) {
+  appearance: base-select;
+  padding: 0.3rem;
+}
+
+#sort {
+  color: blue
+}
+
+
+seletedoption {
+    background-color: transparent;
+}
+
+/* base styles when picker is open but not interacted with */
+/* ::picker(select) {
+    width: var(--icon-width);
+    transition: width 0.5s;
+  } */
+  
+  /* animate the text in on hover & focus */
+  /* ::picker(select):hover,
+  select:has(option:focus-visible)::picker(select) {
+    width: calc-size(auto, size + 0.5rem);
+  } */

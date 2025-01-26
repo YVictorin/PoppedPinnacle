@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import useFetchData from "../../../hooks/useFetchData";
 import { Container, Row, Col, Card } from "react-bootstrap";
-
+import SidebarFilter from "../SidebarFilter";
+import SortFilter from "../SortFilter/SortFilter";
+import { useOutletContext } from "react-router-dom";
 
 export default function ProductGrid() {
   const URLS = {
@@ -10,6 +12,11 @@ export default function ProductGrid() {
 
   const [data, isLoading, isError, error] = useFetchData({ url: URLS.PRODUCTS });
   const [hoveredProduct, setHoveredProduct] = useState(null);
+  const [display, setDisplay] = useState([]);
+  const [priceFilter, setPriceFilter] = useState("all"); // either all, low, or high
+  const [typeFilter, setTypeFilter] = useState([]); // either sweet, savory, or spicy
+
+  const { isMobile } = useOutletContext();
 
   // Handle hover effect
   const handleMouseOver = (product) => {
@@ -19,6 +26,30 @@ export default function ProductGrid() {
   const handleMouseLeave = () => {
     setHoveredProduct(null);
   };
+
+  const applyFilters = () => {
+    let filteredProducts = [...data]; // Start with all data
+
+    if (priceFilter === "low") {
+      filteredProducts = filteredProducts.filter((product) => parseInt(product.price) < 30);
+    } else if (priceFilter === "high") {
+      filteredProducts = filteredProducts.filter((product) => parseInt(product.price) > 30);
+    }
+
+    if (typeFilter.length > 0) {
+      filteredProducts = filteredProducts.filter((product) => typeFilter.includes(product.type));
+    }
+
+    setDisplay(filteredProducts); // Update the display state with the filtered products
+  };
+
+  // whenever data, priceFilter, or typeFilter changes, apply both filters
+  useEffect(() => {
+    //if data has elements i.e has fetched already
+    if (data.length > 0) {
+      applyFilters();
+    }
+  }, [data, priceFilter, typeFilter]);
 
   if (isLoading) {
     return <div className="text-center py-5">Loading...</div>;
@@ -30,61 +61,63 @@ export default function ProductGrid() {
 
   return (
     <>
-    <Container 
-        fluid 
-        className="p-20" 
-        style={{position: "absolute", top: "60%"}}
-    >
-        <Container className="bg-transparent mb-20">
-        <h1 className="text-center text-7xl font-bold">Our Best Products</h1>
-        </Container>
+      <Container
+        fluid
+        className={!isMobile ? "p-20 flex gap-2" : "p-20 flex flex-col gap-2 "}
+        style={{ position: "absolute", top: "60%" }}
+      >
+        <Col xs={2}>
+          <SidebarFilter setTypeFilter={setTypeFilter} isMobile={isMobile} />
+        </Col>
 
-      <Row className="justify-content-center g-4">
-        
-        {/* making sure data has elements inside before looping */}
-        {data.length > 0 ? (
-          data.map((product) => (
-            // Responsive breakpoints for grid layout
-            <Col
-              key={product.id}
-              xs={12}
-              sm={6}
-              md={4}
-              lg={3}
-              className="d-flex justify-content-center"
-            >
-              <Card
-                className="shadow-lg hover:scale-105 transition-transform"
-                onMouseOver={() => handleMouseOver(product)}
-                onMouseLeave={handleMouseLeave}
-                // optional chaining and changes url if the state has updated the img and the img's id
-                style={{
-                  backgroundImage: `url(${
-                    hoveredProduct?.id === product.id ? product.imgUrl2 : product.imgUrl1
-                  })`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  height: "400px",
-                  width: "100%",
-                  position: "relative",
-                }}
-              >
-                <Card.Body
-                  className="flex flex-col items-center justify-end bg-gradient-to-t from-black/70 via-black/40 to-transparent text-white"
-                  style={{ height: "100%" }}
+        <Col xs={10} className="mx-auto">
+          <Row className="justify-content-center g-4 ">
+            <SortFilter setPriceFilter={setPriceFilter} />
+            {/* Display filtered products */}
+            {display.length > 0 ? (
+              display.map((product) => (
+                <Col
+                  key={product.id}
+                  // responsive breakpoints 
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  className="d-flex justify-content-center"
                 >
-                  <h5 className="text-lg font-semibold">{product.name}</h5>
-                  <p className="text-sm">{product.descr || "Gourmet Popcorn"}</p>
-                  <p className="text-xl font-medium opacity-70">${product.price}</p>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))
-        ) : (
-          <div className="text-center text-gray-500">No products available.</div>
-        )}
-      </Row>
-    </Container>
+                  <Card
+                    className="hover:scale-105 transition-transform"
+                    onMouseOver={() => handleMouseOver(product)}
+                    onMouseLeave={handleMouseLeave}
+                    style={{
+                      backgroundImage: `url(${
+                        //optional chaining for when the user has yet to hover over a product
+                        hoveredProduct?.id === product.id ? product.imgUrl2 : product.imgUrl1
+                      })`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      height: "400px",
+                      width: "100%",
+                      position: "relative",
+                    }}
+                  >
+                    <Card.Body
+                      className="flex flex-col items-center justify-end bg-gradient-to-t from-black/70 via-black/40 to-transparent text-white"
+                      style={{ height: "100%" }}
+                    >
+                      <h5 className="text-lg font-semibold">{product.name}</h5>
+                      <p className="text-sm">{product.descr || "Gourmet Popcorn"}</p>
+                      <p className="text-xl font-medium opacity-70">${product.price}</p>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))
+            ) : (
+              <div className="text-center text-gray-500">No products available.</div>
+            )}
+          </Row>
+        </Col>
+      </Container>
     </>
   );
 }

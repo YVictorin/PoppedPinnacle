@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 
-export default function Navbar() {
-    return (
+export default function Navbar({ isContactPage }) {
+    return !isContactPage ? (
+    
         <>
         <header>
         <div className="shipping-nav">
@@ -28,6 +29,6 @@ export default function Navbar() {
             </ul>
         </nav>
     </header>
-        </>
-    )
+        </> 
+    ) : null
 }
