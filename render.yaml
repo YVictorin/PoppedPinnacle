@@ -1,19 +1,19 @@
 services:
-  # Backend service
+  # Backend Service
   - type: web
     name: popped-pinnacle-backend
     env: node
     buildCommand: npm install
-    startCommand: npm start
+    startCommand: npm run devStart  # Runs both server and auto-build for client
     envVars:
       - key: NODE_ENV
         value: production
-    # Path to the backend directory
     rootDir: server
-    # Specify the port Render will expose
     autoDeploy: true
+    # Expose backend on port 3000
+    port: 3000
 
-  # Frontend service
+  # Frontend Service
   - type: web
     name: popped-pinnacle-frontend
     env: static
@@ -22,8 +22,8 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-    # Specify the root directory of the frontend
     rootDir: client
+    autoDeploy: true
     # Optional: Redirect all paths to index.html for React Router
     routes:
       - type: rewrite
