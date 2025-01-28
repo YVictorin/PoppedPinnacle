@@ -20,8 +20,9 @@ export default function Navbar({ isContactPage }) {
                 <li><img className="logo" src="images/logo.png" alt=""></img></li>
                 <li><Link to="/">HOME</Link></li>
                     <li><Link id="products-page-link" to="/products">POPCORN FLAVORS</Link></li>
+                    <li>YOUR ACCOUNT</li>
                     <li><Link to="/contact">CONTACT US</Link></li>
-                    <li>CREATE</li>
+
                    
                     <li><span id="search-icon" className="material-symbols-outlined">search</span></li>
                     <li><span id="cart-icon" className="material-symbols-outlined">shopping_cart</span></li>

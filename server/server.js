@@ -7,6 +7,7 @@ import cors from "cors";
 import indexRouter from "./src/routes/index.js";
 import userRouter from "./src/routes/users.js"; 
 import productRouter from "./src/routes/products.js";
+import supportBotRouter from "./src/routes/supportBotRoute.js"
 
 
 
@@ -22,10 +23,11 @@ app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
 
 app.use(express.static(path.resolve(__dirname, '../client/dist')));
 
-// Use routers
+// use routers
 app.use('/', indexRouter);
 app.use('/users', userRouter); 
 app.use('/products', productRouter);
+app.use('/supportBot', supportBotRouter)
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

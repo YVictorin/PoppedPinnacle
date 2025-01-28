@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { Link, useOutletContext, useParams } from 'react-router-dom';
+import { Link, useOutletContext, useNavigate } from 'react-router-dom';
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -29,6 +29,8 @@ export default function ContactForm() {
   const phoneNumRef = useRef(null);
   const emailRef = useRef(null);
   const textAreaRef = useRef(null);
+
+  const navigate = useNavigate();
 
   const { isMobile } = useOutletContext()
 
@@ -116,11 +118,13 @@ export default function ContactForm() {
     if (!/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/.test(email)) errors.email = 'Invalid email address';
 
     setFormErrors(errors);
+    // reset form if there are no errors
     if(Object.keys(errors).length === 0) {
       nameRef.current.value = ''
       phoneNumRef.current.value = ''
       emailRef.current.value = ''
       textAreaRef.current.value = ''
+      navigate(0)  //refreshes the page
     }
 }
   
