@@ -1,20 +1,19 @@
 
 import { useState, useEffect } from "react";
 
-export default function useFetchData({ url, method = "GET", postedData = null }) {
+export default function useFetchData({ url, method = "GET", initialPostedData = null }) {
   // start the data as an empty array so components that use this don't have to parse or Array.isArray checks, or anything
-    const [data, setData] = useState([]); 
-
-    
+    const [data, setData] = useState([]);     
     const [isLoading, setIsLoading] = useState(false);
+    const [postedData, setPostedData] = useState(initialPostedData || {})
     const [isError, setIsError] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
-            if (!url) {
+            if (!url || (method === "POST" && Object.keys(postedData).length === 0)) {
                 setIsError(true);
-                setError("URL is undefined");
+                setError("No data to send or URL undefined.");
                 setIsLoading(false);
                 return;
             }
@@ -58,5 +57,5 @@ export default function useFetchData({ url, method = "GET", postedData = null })
         fetchData();
     }, [url, method, postedData]); // only fetch when one of these three changes
 
-    return [data, isLoading, isError, error];
+    return [data, isLoading, isError, error, postedData, setPostedData];
 }
