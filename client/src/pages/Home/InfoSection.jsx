@@ -10,7 +10,7 @@ const InfoSection = () => {
     const IMAGES = [img1, img2, img3, img4]
     return (
         <>
-        <div className=" w-full h-3/6 grid place-content-center">
+        <div className=" w-full h-3/6 grid place-content-center" id="info-section">
             <div style={{
                 maxWidth: "1200px",
                 width: "100%",
