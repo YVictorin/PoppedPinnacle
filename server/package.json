@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "echo \"No build needed\" && exit 1",
+    "build": "echo \"No build needed\" && npm run devStart",
     "devStart": "concurrently \"npm run start-server\" \"npm run auto-build-client\"",
     "start-server": "node --watch --experimental-sqlite --env-file=.env server.js",
     "auto-build-client": "cd .. && cd client && npm run build -- --watch"
