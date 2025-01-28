@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "set NODE_ENV=developent && npm install --production=false && cd .. && cd client npm install",
-    "devStart": "set NODE_ENV=developent && concurrently \"npm run start-server\" \"npm run auto-build-client\"",
+    "build": "set NODE_ENV=development && npm install --production=false && cd .. && cd client npm install",
+    "devStart": "set NODE_ENV=development && concurrently \"npm run start-server\" \"npm run auto-build-client\"",
     "start-server": "node --watch --experimental-sqlite --env-file=.env server.js",
     "auto-build-client": "cd .. && cd client && npm run build -- --watch"
   },
