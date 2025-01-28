@@ -10,8 +10,6 @@ services:
         value: production
     rootDir: server
     autoDeploy: true
-    # Expose backend on port 3000
-    port: 3000
 
   # Frontend Service
   - type: web
