@@ -17,5 +17,4 @@ router.get('/', (req, res) => {
     res.sendFile(indexPath)
 });
 
-
 export default router;
