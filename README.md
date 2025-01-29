@@ -1,5 +1,5 @@
 
-# Product Name
+# Popped Pinnacle
 > Short blurb about what your product does.
 
 [![NPM Version][npm-image]][npm-url]
