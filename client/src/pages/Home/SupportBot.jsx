@@ -2,9 +2,11 @@ import { useState, useRef, useEffect } from "react";
 import { X, Minus } from 'lucide-react';
 import SupportTextBox from "./SupportTextBox";
 import useFetchData from "../../hooks/useFetchData"
-
+import { useOutletContext } from "react-router-dom"
 
 export default function SupportBot(){
+    const { isMobile } = useOutletContext()
+
      const URLS = {
         SUPPORT_BOT: "http://localhost:3001/supportBot",
       };
@@ -61,7 +63,7 @@ export default function SupportBot(){
     
 
     return (
-        <>
+        <> 
             {isOpen ? ( 
                 <dialog 
                     ref={dialogRef}

@@ -17,10 +17,11 @@ export default function Navbar({ isContactPage }) {
         </div>
         <nav id="logo-list">
             <ul className="logo-ul">
-                <li><img className="logo" src="images/logo.png" alt=""></img></li>
-                <li><Link to="/">HOME</Link></li>
+                <li><Link to="/"><img className="logo" src="images/logo.png" alt=""></img></Link></li>
+                {/* <li><Link to="/">HOME</Link></li> */}
                     <li><Link id="products-page-link" to="/products">POPCORN FLAVORS</Link></li>
-                    <li>YOUR ACCOUNT</li>
+                    <li><Link to="/login">LOGIN</Link></li>
+                    <li><Link to="/account">YOUR ACCOUNT</Link></li>
                     <li><Link to="/contact">CONTACT US</Link></li>
 
                    
