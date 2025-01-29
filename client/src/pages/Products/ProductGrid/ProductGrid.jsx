@@ -7,7 +7,7 @@ import { useOutletContext } from "react-router-dom";
 
 export default function ProductGrid() {
   const URLS = {
-    PRODUCTS: "https://popped-pinnacle-a9ej.vercel.app/products",
+    PRODUCTS: "https://poppedpinnacle-1.onrender.com/products",
   };
 
   const [data, isLoading, isError, error] = useFetchData({ url: URLS.PRODUCTS });

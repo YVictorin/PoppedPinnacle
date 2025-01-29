@@ -8,7 +8,7 @@ export default function SupportBot(){
     const { isMobile } = useOutletContext()
 
      const URLS = {
-        SUPPORT_BOT: "http://localhost:3001/supportBot",
+        SUPPORT_BOT: "https://poppedpinnacle-1.onrender.com/supportBot",
       };
 
       const [ 
