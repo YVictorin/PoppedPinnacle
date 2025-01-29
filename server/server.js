@@ -19,7 +19,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.SERVER_PORT || 3001;
 
 app.use(cors());
 app.use(cookieParser());
@@ -46,6 +46,6 @@ app.use((err, req, res, next) => {
 });
 
 
-app.listen(PORT, () => {
+app.listen(5000, () => {
     console.log(`Server is running on port ${PORT}`);
 });
